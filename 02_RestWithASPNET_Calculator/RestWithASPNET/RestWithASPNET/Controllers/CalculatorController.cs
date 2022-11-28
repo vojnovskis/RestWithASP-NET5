@@ -15,15 +15,53 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber)
+        public IActionResult Sum(string firstNumber, string secondNumber)
         {
-            if (IsNumeric(secondNumber) && IsNumeric (secondNumber))
+            if (IsNumeric(secondNumber) && IsNumeric(secondNumber))
             {
                 var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
                 return Ok(sum.ToString());
             }
             return BadRequest("Invalid Input");
-    
+
+        }
+
+            [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
+            public IActionResult Subtraction(string firstNumber, string secondNumber)
+            {
+                if (IsNumeric(secondNumber) && IsNumeric(secondNumber))
+                {
+                    var subtraction = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                    return Ok(subtraction.ToString());
+                }
+                return BadRequest("Invalid Input");
+
+        }
+
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+            public IActionResult Multiplication(string firstNumber, string secondNumber)
+            {
+                if (IsNumeric(secondNumber) && IsNumeric(secondNumber))
+                {
+                    var multiplication = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                    return Ok(multiplication.ToString());
+                }
+                return BadRequest("Invalid Input");
+
+            
+        }
+
+        [HttpGet("division/{firstNumber}/{secondNumber}")]
+        public IActionResult division(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(secondNumber) && IsNumeric(secondNumber))
+            {
+                var division = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(division.ToString());
+            }
+            return BadRequest("Invalid Input");
+
         }
     private bool IsNumeric(string strNumber)
         {
